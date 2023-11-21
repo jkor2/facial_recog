@@ -41,6 +41,15 @@ def detectAndDisplay(frame, landmark_detector):
         # Check if atleast all points have been plotted
         if len(landmark_points) >= 68:
 
+            """
+            Need to be added
+
+            Eye brow line
+            eyebrow text
+            lips line
+            lips text 
+            """
+
             # Points to plot lines
             eyes_left = landmark_points[0]
             eyes_right = landmark_points[16]
