@@ -11,6 +11,8 @@ def detectAndDisplay(frame, landmark_detector):
     # Face detection
     faces = face_cascade.detectMultiScale(frame_gray)
 
+    landmark_points = []
+
     for (x, y, w, h) in faces:
 
         frame = cv.rectangle(frame, (x, y), (x+w, y+h),
@@ -18,9 +20,21 @@ def detectAndDisplay(frame, landmark_detector):
         _, landmarks = landmark_detector.fit(frame_gray, faces)
         for landmark in landmarks:
             for x, y in landmark[0]:
-                # display landmarks on "image_cropped"
-                # with white colour in BGR and thickness 1
+                landmark_points.append((int(x), int(y)))
+                count = 0
                 cv.circle(frame, (int(x), int(y)), 1, (255, 255, 255), 1)
+                count += 1
+
+        if len(landmark_points) >= 68:
+            print(landmark_points)
+
+            eyes_left = landmark_points[0]
+            eyes_right = landmark_points[16]
+            chin_left = landmark_points[6]
+            chin_right = landmark_points[10]
+
+            cv.line(frame, eyes_left, eyes_right, (255, 255), 1)
+            cv.line(frame, chin_left, chin_right, (225, 225), 1)
 
     cv.imshow("Capture Face Detection", frame)
 
@@ -54,7 +68,7 @@ landmark_detector.loadModel(LBFmodel)
 
 while True:
     ret, frame = cap.read()
-    print(frame)
+
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
