@@ -26,15 +26,18 @@ def detectAndDisplay(frame, landmark_detector):
                 count += 1
 
         if len(landmark_points) >= 68:
-            print(landmark_points)
+            print(landmark_points[0][0], landmark_points[0][1])
 
             eyes_left = landmark_points[0]
             eyes_right = landmark_points[16]
             chin_left = landmark_points[6]
             chin_right = landmark_points[10]
+            nose_left = landmark_points[3]
+            nose_right = landmark_points[13]
 
             cv.line(frame, eyes_left, eyes_right, (255, 255), 1)
             cv.line(frame, chin_left, chin_right, (225, 225), 1)
+            cv.line(frame, nose_left, nose_right, (225, 225), 1)
 
     cv.imshow("Capture Face Detection", frame)
 
