@@ -25,7 +25,7 @@ def detectAndDisplay(frame, landmark_detector):
 
         # Plot rectangle around face on image
         frame = cv.rectangle(frame, (x, y), (x+w, y+h),
-                             (255, 0, 255), 1)
+                             (128, 128, 128), 1)
 
         # Fit landmark model with gray scale image and faces detection
         _, landmarks = landmark_detector.fit(frame_gray, faces)
@@ -46,14 +46,19 @@ def detectAndDisplay(frame, landmark_detector):
             eyes_right = landmark_points[16]
             chin_left = landmark_points[6]
             chin_right = landmark_points[10]
-            nose_left = landmark_points[3]
-            nose_right = landmark_points[13]
+            nose_left = landmark_points[2]
+            nose_right = landmark_points[14]
 
             # Plots lines
-            cv.line(frame, eyes_left, eyes_right, (255, 255), 1)
-            cv.line(frame, chin_left, chin_right, (225, 225), 1)
-            cv.line(frame, nose_left, nose_right, (225, 225), 1)
-
+            cv.line(frame, eyes_left, eyes_right, (0, 0, 0), 2)
+            cv.putText(frame, "Eye Line", (eyes_left[0], (eyes_left[1] - 10)),
+                       cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+            cv.line(frame, chin_left, chin_right, (0, 0, 0), 2)
+            cv.putText(frame, "Chin Line", (chin_left[0], (chin_left[1] - 10)),
+                       cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+            cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
+            cv.putText(frame, "Nose Line", (nose_left[0], (nose_left[1] - 10)),
+                       cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
     cv.imshow("Capture Face Detection", frame)
 
 
@@ -89,6 +94,7 @@ while True:
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
-    detectAndDisplay(frame, landmark_detector)
+    # Passed in a frame flipped on the x axis to be more 'natrual'
+    detectAndDisplay(cv.flip(frame, 1), landmark_detector)
     if cv.waitKey(10) == 27:
         break
