@@ -1,6 +1,10 @@
 from __future__ import print_function
 import cv2 as cv
 import argparse
+import urllib.request as urlreq
+import os
+import matplotlib.pyplot as plt
+from pylab import rcParams
 
 
 def detectAndDisplay(frame):
@@ -42,6 +46,7 @@ if not cap.isOpened():
 
 while True:
     ret, frame = cap.read()
+    print(frame)
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
