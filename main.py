@@ -122,17 +122,19 @@ class Main:
                 forehead_distance = eye_brow_right[0] - eye_brow_left[0]
 
                 # Plots lines
-                cv.line(frame, cheek_left, cheek_right, (0, 0, 0), 2)
+                cv.line(frame, cheek_left, cheek_right, (128, 128, 128), 2)
                 cv.putText(frame, str(cheek_distance), (cheek_left[0], (cheek_left[1] - 5)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
-                cv.line(frame, chin_left, chin_right, (0, 0, 0), 2)
+                cv.line(frame, chin_left, chin_right, (128, 128, 128), 2)
                 cv.putText(frame, "Chin Line", (chin_left[0], (chin_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
-                cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
+                cv.line(frame, nose_left, nose_right, (128, 128, 128), 2)
                 cv.putText(frame, str(top_jaw_distance), (nose_left[0], (nose_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
                 cv.line(frame, (eye_brow_left[0], int(forehead * 1.10)),
                         (eye_brow_right[0], int(forehead * 1.10)), (128, 128, 128), 2)
+                cv.putText(frame, str(forehead_distance),
+                           (eye_brow_left[0], int(forehead * 1.05)), cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
         cv.imshow("Capture Face Detection", frame)
 
