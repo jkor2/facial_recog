@@ -179,7 +179,14 @@ class Main:
         cheek, jaw, forehead, chin - distances
         calculates facial shape 
         """
-        print(cheek, jaw, forehead, chin, head_length)
+
+        # Ratios
+        cheek_ratio = cheek / head_length
+        jaw_ratio = jaw / head_length
+        forehead_ratio = forehead / head_length
+        chin_ratio = chin / head_length
+
+        print(cheek_ratio, jaw_ratio, forehead_ratio, chin_ratio)
 
     # -------------Create-Methods-----------------------
     def create_LM_detector(self):
