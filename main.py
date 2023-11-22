@@ -26,6 +26,8 @@ class Main:
         """
         Begin face detecion on single image
         """
+
+        # Creaste cascade and landmark detector
         self.create_face_cascade()
         self.create_LM_detector()
 
@@ -48,10 +50,8 @@ class Main:
         Begin face detection on live camera
         """
 
-        # Detection Data
+        # Create cascade and landmark detector
         self.create_face_cascade()
-
-        # Facial Landmark Model
         self.create_LM_detector()
 
         # Args
