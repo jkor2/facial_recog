@@ -23,11 +23,6 @@ class Main:
         self._face_cascade = None
         self._landmark_detector = None
         self._image = "faces/circle-face-man.png"
-        self._ratio_classifier = {
-            'low': .30,
-            'moderate': .70,
-            'high': 1.0
-        }
 
     def run_detection_stillshot(self):
         """
@@ -191,9 +186,10 @@ class Main:
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
 
-        print(cheek_ratio, jaw_ratio, forehead_ratio, chin_ratio)
+        # Check face shape based on conditionals
 
     # -------------Create-Methods-----------------------
+
     def create_LM_detector(self):
         """
         Creates landmark detector 
