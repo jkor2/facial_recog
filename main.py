@@ -66,7 +66,8 @@ class Main:
         frame_gray = cv.equalizeHist(frame_gray)
 
         # Rectangle face detection
-        faces = self._face_cascade.detectMultiScale(frame_gray)
+        faces = self._face_cascade.detectMultiScale(
+            frame_gray, scaleFactor=1.2, minNeighbors=5)
 
         # Hold point location for facial point landmarks
         landmark_points = []
@@ -74,8 +75,8 @@ class Main:
         for (x, y, w, h) in faces:
 
             # Plot rectangle around face on image
-            frame = cv.rectangle(frame, (x, y), (x+w, y+h),
-                                 (128, 128, 128), 1)
+            # frame = cv.rectangle(frame, (x, y), ((x+w), (y+h)),
+            # (128, 128, 128), 1)
 
             # Fit landmark model with gray scale image and faces detection
             _, landmarks = landmark_detector.fit(frame_gray, faces)
