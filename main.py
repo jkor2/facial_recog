@@ -45,7 +45,7 @@ class Main:
             exit(0)
 
         while True:
-            ret, frame = capture_user.read()
+            _, frame = capture_user.read()
             # Confrim frame is valid
             if frame is None:
                 print("Error - No frames captured")
@@ -74,14 +74,8 @@ class Main:
 
         for (x, y, w, h) in faces:
 
-            # Plot rectangle around face on image
-            # frame = cv.rectangle(frame, (x, y), ((x+w), (y+h)),
-            # (128, 128, 128), 1)
-
+            # Top of forehead area, y
             forehead = y
-
-            # cv.rectangle(frame, (x, forehead),
-            #             (x + w, forehead), (0, 255, 0), 2)
 
             # Fit landmark model with gray scale image and faces detection
             _, landmarks = landmark_detector.fit(frame_gray, faces)
@@ -96,15 +90,6 @@ class Main:
 
             # Check if atleast all points have been plotted
             if len(landmark_points) >= 68:
-
-                """
-                Need to be added
-
-                Eye brow line
-                eyebrow text
-                lips line
-                lips text 
-                """
 
                 # Points to plot lines
                 cheek_left = landmark_points[1]
@@ -131,6 +116,7 @@ class Main:
                 cv.line(frame, nose_left, nose_right, (128, 128, 128), 2)
                 cv.putText(frame, str(top_jaw_distance), (nose_left[0], (nose_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+                # Forehead calculated based on farthest out eyebrow point and plotted slightly below the top of forehead
                 cv.line(frame, (eye_brow_left[0], int(forehead * 1.10)),
                         (eye_brow_right[0], int(forehead * 1.10)), (128, 128, 128), 2)
                 cv.putText(frame, str(forehead_distance),
