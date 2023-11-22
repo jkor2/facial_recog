@@ -139,6 +139,11 @@ class Main:
         cv.imshow("Capture Face Detection", frame)
 
     def calculate_face_shape(self, cheek, jaw, forehead, chin):
+        """
+        Takes 4 parameters
+        cheek, jaw, forehead, chin - distances
+        calculates facial shape 
+        """
         print(cheek, jaw, forehead, chin)
 
 
