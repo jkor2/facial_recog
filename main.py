@@ -78,6 +78,11 @@ class Main:
             # frame = cv.rectangle(frame, (x, y), ((x+w), (y+h)),
             # (128, 128, 128), 1)
 
+            forehead = y
+
+            # cv.rectangle(frame, (x, forehead),
+            #             (x + w, forehead), (0, 255, 0), 2)
+
             # Fit landmark model with gray scale image and faces detection
             _, landmarks = landmark_detector.fit(frame_gray, faces)
             for landmark in landmarks:
@@ -108,10 +113,13 @@ class Main:
                 chin_right = landmark_points[10]
                 nose_left = landmark_points[3]
                 nose_right = landmark_points[13]
+                eye_brow_left = landmark_points[17]
+                eye_brow_right = landmark_points[26]
 
                 # Calcaulte cheek distance
                 cheek_distance = cheek_right[0] - cheek_left[0]
                 top_jaw_distance = nose_right[0] - nose_left[0]
+                forehead_distance = eye_brow_right[0] - eye_brow_left[0]
 
                 # Plots lines
                 cv.line(frame, cheek_left, cheek_right, (0, 0, 0), 2)
@@ -123,6 +131,9 @@ class Main:
                 cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
                 cv.putText(frame, str(top_jaw_distance), (nose_left[0], (nose_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+                cv.line(frame, (eye_brow_left[0], int(forehead * 1.10)),
+                        (eye_brow_right[0], int(forehead * 1.10)), (128, 128, 128), 2)
+
         cv.imshow("Capture Face Detection", frame)
 
 
