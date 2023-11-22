@@ -74,8 +74,15 @@ class Main:
 
         for (x, y, w, h) in faces:
 
+            # Plot rectangle around face on image
+            # frame = cv.rectangle(frame, (x, y), (x+w, y+h),
+            #                     (128, 128, 128), 1)
+
             # Top of forehead area, y
             forehead = y
+
+            # Calculate the middle of the between x1 and x2 (x + w)
+            forhead_mid = (x + (x+w)) // 2
 
             # Fit landmark model with gray scale image and faces detection
             _, landmarks = landmark_detector.fit(frame_gray, faces)
@@ -100,6 +107,7 @@ class Main:
                 nose_right = landmark_points[13]
                 eye_brow_left = landmark_points[17]
                 eye_brow_right = landmark_points[26]
+                bottom_chin = landmark_points[8]
 
                 # Calcaulte cheek distance
                 cheek_distance = cheek_right[0] - cheek_left[0]
@@ -121,6 +129,9 @@ class Main:
                         (eye_brow_right[0], int(forehead * 1.10)), (128, 128, 128), 2)
                 cv.putText(frame, str(forehead_distance),
                            (eye_brow_left[0], int(forehead * 1.05)), cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+
+                cv.line(frame, bottom_chin, (int(forhead_mid),
+                        int(forehead)), (128, 128, 128), 2)
 
         cv.imshow("Capture Face Detection", frame)
 
