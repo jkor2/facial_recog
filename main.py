@@ -169,17 +169,17 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 self.calculate_face_shape(
-                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance)
+                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth)
 
         cv.imshow("Capture Face Detection", frame)
 
-    def calculate_face_shape(self, cheek, jaw, forehead, chin):
+    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length):
         """
         Takes 4 parameters
         cheek, jaw, forehead, chin - distances
         calculates facial shape 
         """
-        print(cheek, jaw, forehead, chin)
+        print(cheek, jaw, forehead, chin, head_length)
 
     # -------------Create-Methods-----------------------
     def create_LM_detector(self):
