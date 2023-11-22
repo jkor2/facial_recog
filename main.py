@@ -7,6 +7,11 @@ import argparse
 
 
 class Main:
+    """
+    Main class, handles all operations of facial detection
+    and face shape calcaultions
+    """
+
     def __init__(self) -> None:
         self._LBFModel = "data/lbfmodel.yaml"  # LBF Modek
         self._haarcascade = "data/lbpcascade_frontalface.xml"  # Training Data
@@ -15,26 +20,47 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
+        self._image = "faces/man-1.png"
 
-    def run_dectection(self):
+    def run_detection_stillshot(self):
         """
-        Begin facial detection
+        Begin face detecion on single image
         """
+        self.create_face_cascade()
+        self.create_LM_detector()
+
+        if self._image is None:
+            return False
+
+        image = cv.imread(self._image)
+
+        # Resize the image to a specific width (e.g., 800 pixels)
+        target_width = 800
+        ratio = target_width / image.shape[1]
+        image = cv.resize(image, (target_width, int(image.shape[0] * ratio)))
+
+        self.detect_and_display(image, self._landmark_detector)
+
+        cv.waitKey(0)
+
+    def run_dectection_live(self):
+        """
+        Begin face detection on live camera
+        """
+
+        # Detection Data
+        self.create_face_cascade()
+
+        # Facial Landmark Model
+        self.create_LM_detector()
 
         # Args
         self._parser.add_argument(
             '--camera', help='Camera device number.', type=int, default=0)
         self._args = self._parser.parse_args()
 
-        # Detection Data
-        self._face_cascade = cv.CascadeClassifier(self._haarcascade)
-
         # Camera with args
         init_camera = self._args.camera
-
-        # Facial Landmark Model
-        self._landmark_detector = cv.face.createFacemarkLBF()
-        self._landmark_detector.loadModel(self._LBFModel)
 
         # Capture
         capture_user = cv.VideoCapture(init_camera)
@@ -53,8 +79,12 @@ class Main:
 
             # Call detect and display method
             self.detect_and_display(cv.flip(frame, 1), self._landmark_detector)
+            # Exit program on press of exit key
             if cv.waitKey(10) == 27:
                 break
+
+            # To run live capture frame by frame, comment out cv.waitKey
+            # section and repalce with just cv.waitKey(0)
 
     def detect_and_display(self, frame, landmark_detector):
         """
@@ -146,6 +176,21 @@ class Main:
         """
         print(cheek, jaw, forehead, chin)
 
+    # -------------Create-Methods-----------------------
+    def create_LM_detector(self):
+        """
+        Creates landmark detector 
+        loading lbf model
+        """
+        self._landmark_detector = cv.face.createFacemarkLBF()
+        self._landmark_detector.loadModel(self._LBFModel)
+
+    def create_face_cascade(self):
+        """
+        Creates face cascade
+        """
+        self._face_cascade = cv.CascadeClassifier(self._haarcascade)
+
 
 run = Main()
-run.run_dectection()
+run.run_dectection_live()
