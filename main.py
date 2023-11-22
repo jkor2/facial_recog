@@ -1,5 +1,7 @@
 # Detect facial landmarks to calcualte facial shape
 # to determine which haircut fits you best!
+# Need to come up with ratio to determine face shape
+
 
 from __future__ import print_function
 import cv2 as cv
@@ -20,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/man-1.png"
+        self._image = "faces/woman-1.png"
 
     def run_detection_stillshot(self):
         """
@@ -193,4 +195,4 @@ class Main:
 
 
 run = Main()
-run.run_dectection_live()
+run.run_detection_stillshot()
