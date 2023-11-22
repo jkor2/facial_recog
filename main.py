@@ -146,6 +146,7 @@ class Main:
                 top_jaw_distance = nose_right[0] - nose_left[0]
                 forehead_distance = eye_brow_right[0] - eye_brow_left[0]
                 chin_distance = chin_right[0] - chin_left[0]
+                head_lenghth = bottom_chin[1] - forehead
 
                 # Plots lines
                 cv.line(frame, cheek_left, cheek_right, (128, 128, 128), 2)
@@ -164,6 +165,8 @@ class Main:
                            (eye_brow_left[0], int(forehead * 1.05)), cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
                 cv.line(frame, bottom_chin, (int(forhead_mid),
                         int(forehead)), (128, 128, 128), 2)
+                cv.putText(frame, str(head_lenghth), ((int(forhead_mid) + 10), int(bottom_chin[1])),
+                           cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance)
@@ -195,4 +198,4 @@ class Main:
 
 
 run = Main()
-run.run_detection_stillshot()
+run.run_dectection_live()
