@@ -9,7 +9,7 @@ import argparse
 class Main:
     def __init__(self) -> None:
         self._LBFModel = "data/lbfmodel.yaml"  # LBF Modek
-        self._haarcascade = "data/haarcascade_frontalface_alt2.xml"  # Training Data
+        self._haarcascade = "data/lbpcascade_frontalface.xml"  # Training Data
         self._parser = argparse.ArgumentParser(
             description="Code for facial recognition")
         self._args = None
@@ -101,16 +101,16 @@ class Main:
                 """
 
                 # Points to plot lines
-                eyes_left = landmark_points[0]
-                eyes_right = landmark_points[16]
+                cheek_left = landmark_points[1]
+                cheek_right = landmark_points[15]
                 chin_left = landmark_points[6]
                 chin_right = landmark_points[10]
                 nose_left = landmark_points[2]
                 nose_right = landmark_points[14]
 
                 # Plots lines
-                cv.line(frame, eyes_left, eyes_right, (0, 0, 0), 2)
-                cv.putText(frame, "Eye Line", (eyes_left[0], (eyes_left[1] - 10)),
+                cv.line(frame, cheek_left, cheek_right, (0, 0, 0), 2)
+                cv.putText(frame, str((cheek_right[0] - cheek_left[0])), (cheek_left[0], (cheek_left[1] - 5)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
                 cv.line(frame, chin_left, chin_right, (0, 0, 0), 2)
                 cv.putText(frame, "Chin Line", (chin_left[0], (chin_left[1] - 10)),
