@@ -105,18 +105,22 @@ class Main:
                 cheek_right = landmark_points[15]
                 chin_left = landmark_points[6]
                 chin_right = landmark_points[10]
-                nose_left = landmark_points[2]
-                nose_right = landmark_points[14]
+                nose_left = landmark_points[3]
+                nose_right = landmark_points[13]
+
+                # Calcaulte cheek distance
+                cheek_distance = cheek_right[0] - cheek_left[0]
+                top_jaw_distance = nose_right[0] - nose_left[0]
 
                 # Plots lines
                 cv.line(frame, cheek_left, cheek_right, (0, 0, 0), 2)
-                cv.putText(frame, str((cheek_right[0] - cheek_left[0])), (cheek_left[0], (cheek_left[1] - 5)),
+                cv.putText(frame, str(cheek_distance), (cheek_left[0], (cheek_left[1] - 5)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
                 cv.line(frame, chin_left, chin_right, (0, 0, 0), 2)
                 cv.putText(frame, "Chin Line", (chin_left[0], (chin_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
                 cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
-                cv.putText(frame, "Nose Line", (nose_left[0], (nose_left[1] - 10)),
+                cv.putText(frame, str(top_jaw_distance), (nose_left[0], (nose_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
         cv.imshow("Capture Face Detection", frame)
 
