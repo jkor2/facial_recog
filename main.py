@@ -2,6 +2,10 @@
 # to determine which haircut fits you best!
 # Need to come up with ratio to determine face shape
 
+"""
+Need to further distinguish rectangle and square, jaw angle would be benefical
+Need to look further into round and oval classification
+"""
 
 from __future__ import print_function
 import cv2 as cv
