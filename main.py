@@ -22,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/oval.png"
+        self._image = "faces/square-face-man.png"
 
     def run_detection_stillshot(self):
         """
@@ -195,7 +195,7 @@ class Main:
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
-            1.1 <= head_ratio <= 1.3
+            head_ratio <= 1.25
         ):
             result = "Face Shape: Round Face"
 
@@ -205,7 +205,7 @@ class Main:
             0.6 <= jaw_ratio <= 0.7 and
             0.5 <= forehead_ratio <= 0.7 and
             0.2 <= chin_ratio <= 0.4 and
-            1.2 <= head_ratio <= 1.4
+            1.25 <= head_ratio <= 1.5
         ):
             result = "Face Shape: Oval Face"
 
@@ -215,7 +215,7 @@ class Main:
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
-            1.2 <= head_ratio <= 1.4
+            head_ratio >= 1.30
         ):
             result = "Face Shape: Rectangle Face"
 
@@ -225,7 +225,7 @@ class Main:
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.7 and
             0.3 <= chin_ratio <= 0.4 and
-            1.2 <= head_ratio <= 1.4
+            head_ratio <= 1.29
         ):
             result = "Face Shape: Square Face"
 
@@ -274,4 +274,4 @@ class Main:
 
 
 run = Main()
-run.run_detection_stillshot()
+run.run_dectection_live()
