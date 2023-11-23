@@ -22,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/man-1.png"
+        self._image = "faces/oval.png"
 
     def run_detection_stillshot(self):
         """
@@ -253,8 +253,8 @@ class Main:
         else:
             result = "Face Shape: Please adjust distance from camera"
 
-        cv.putText(frame, str(result), (0, 50),
-                   cv.FONT_HERSHEY_DUPLEX, .75, (0, 0, 0), 0)
+        cv.putText(frame, str(result), (10, 50),
+                   cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
 
     # -------------Create-Methods-----------------------
 
@@ -274,4 +274,4 @@ class Main:
 
 
 run = Main()
-run.run_dectection_live()
+run.run_detection_stillshot()
