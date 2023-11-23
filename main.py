@@ -191,7 +191,7 @@ class Main:
 
         # Round Face
         if (
-            0.8 <= cheek_ratio <= 0.9 and
+            0.8 <= cheek_ratio <= 1.0 and
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
