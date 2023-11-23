@@ -5,6 +5,7 @@
 """
 Need to further distinguish rectangle and square, jaw angle would be benefical
 Need to look further into round and oval classification
+Toruble detecting faceshape with beard
 """
 
 from __future__ import print_function
@@ -134,7 +135,7 @@ class Main:
             # Check if atleast all points have been plotted
             if len(landmark_points) >= 68:
 
-                # Points to plot lines
+                # Needed Facial Landmark (x,y) pairs
                 cheek_left = landmark_points[1]
                 cheek_right = landmark_points[15]
                 chin_left = landmark_points[6]
@@ -175,7 +176,7 @@ class Main:
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
 
-        cv.imshow("Capture Face Detection", frame)
+        cv.imshow("Face Shape", frame)
 
     def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame):
         """
@@ -286,4 +287,4 @@ class Main:
 
 
 run = Main()
-run.run_detection_stillshot()
+run.run_dectection_live()
