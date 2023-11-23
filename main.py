@@ -287,4 +287,4 @@ class Main:
 
 
 run = Main()
-run.run_dectection_live()
+run.run_detection_stillshot()
