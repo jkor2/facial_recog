@@ -22,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/man-1.png"
+        self._image = "faces/rectangle-1-test.png"
 
     def run_detection_stillshot(self):
         """
