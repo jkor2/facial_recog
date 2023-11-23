@@ -84,7 +84,7 @@ class Main:
             # Exit program on press of exit key
             if cv.waitKey(10) == 27:
                 break
-
+            # cv.waitKey(0)
             # To run live capture frame by frame, comment out cv.waitKey
             # section and repalce with just cv.waitKey(0)
 
@@ -186,8 +186,6 @@ class Main:
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
 
-        # Check face shape based on conditionals
-
     # -------------Create-Methods-----------------------
 
     def create_LM_detector(self):
@@ -206,4 +204,4 @@ class Main:
 
 
 run = Main()
-run.run_dectection_live()
+run.run_detection_stillshot()
