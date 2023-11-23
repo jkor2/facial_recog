@@ -22,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/circle-face-man.png"
+        self._image = "faces/man-1.png"
 
     def run_detection_stillshot(self):
         """
@@ -169,11 +169,11 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 self.calculate_face_shape(
-                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth)
+                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
 
         cv.imshow("Capture Face Detection", frame)
 
-    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length):
+    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame):
         """
         Takes 4 parameters
         cheek, jaw, forehead, chin - distances
@@ -185,6 +185,76 @@ class Main:
         jaw_ratio = jaw / head_length
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
+        head_ratio = head_length / cheek
+
+        result = "Loading..."
+
+        # Round Face
+        if (
+            0.8 <= cheek_ratio <= 0.9 and
+            0.7 <= jaw_ratio <= 0.8 and
+            0.6 <= forehead_ratio <= 0.8 and
+            0.3 <= chin_ratio <= 0.4 and
+            1.1 <= head_ratio <= 1.3
+        ):
+            result = "Face Shape: Round Face"
+
+        # Oval Face
+        elif (
+            0.7 <= cheek_ratio <= 0.8 and
+            0.6 <= jaw_ratio <= 0.7 and
+            0.5 <= forehead_ratio <= 0.7 and
+            0.2 <= chin_ratio <= 0.4 and
+            1.2 <= head_ratio <= 1.4
+        ):
+            result = "Face Shape: Oval Face"
+
+        # Rectangle Face
+        elif (
+            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= jaw_ratio <= 0.8 and
+            0.6 <= forehead_ratio <= 0.8 and
+            0.3 <= chin_ratio <= 0.4 and
+            1.2 <= head_ratio <= 1.4
+        ):
+            result = "Face Shape: Rectangle Face"
+
+        # Square Face
+        elif (
+            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= jaw_ratio <= 0.8 and
+            0.6 <= forehead_ratio <= 0.7 and
+            0.3 <= chin_ratio <= 0.4 and
+            1.2 <= head_ratio <= 1.4
+        ):
+            result = "Face Shape: Square Face"
+
+        # Heart-Shaped Face
+        elif (
+            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= jaw_ratio <= 0.8 and
+            0.5 <= forehead_ratio <= 0.7 and
+            0.3 <= chin_ratio <= 0.4 and
+            1.2 <= head_ratio <= 1.4
+        ):
+            result = "Face Shape: Heart-Shaped Face"
+
+        # Diamond Shaped Face
+        elif (
+            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= jaw_ratio <= 0.8 and
+            0.6 <= forehead_ratio <= 0.8 and
+            0.3 <= chin_ratio <= 0.4 and
+            1.2 <= head_ratio <= 1.4
+        ):
+            result = "Face Shape: Diamond Shaped Face"
+
+        # If none of the conditions match
+        else:
+            result = "Face Shape: Please adjust distance from camera"
+
+        cv.putText(frame, str(result), (0, 50),
+                   cv.FONT_HERSHEY_DUPLEX, .75, (0, 0, 0), 0)
 
     # -------------Create-Methods-----------------------
 
@@ -204,4 +274,4 @@ class Main:
 
 
 run = Main()
-run.run_detection_stillshot()
+run.run_dectection_live()
