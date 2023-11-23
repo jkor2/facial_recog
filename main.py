@@ -19,14 +19,14 @@ class Main:
     """
 
     def __init__(self) -> None:
-        self._LBFModel = "data/lbfmodel.yaml"  # LBF Modek
+        self._LBFModel = "data/lbfmodel.yaml"  # LBF Model
         self._haarcascade = "data/lbpcascade_frontalface.xml"  # Training Data
         self._parser = argparse.ArgumentParser(
             description="Code for facial recognition")
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/rectangle-1-test.png"
+        self._image = "faces/oval.png"
 
     def run_detection_stillshot(self):
         """
@@ -200,6 +200,7 @@ class Main:
         result = "Loading..."
 
         # Round Face
+        # Cheek needs to be widest point
         if (
             0.8 <= cheek_ratio <= 1.0 and
             0.7 <= jaw_ratio <= 0.8 and
@@ -210,6 +211,7 @@ class Main:
             result = "Face Shape: Round Face"
 
         # Oval Face
+        # Cheek needs to be widest point
         elif (
             0.7 <= cheek_ratio <= 0.8 and
             0.6 <= jaw_ratio <= 0.7 and
@@ -221,7 +223,7 @@ class Main:
 
         # Rectangle Face
         elif (
-            0.7 <= cheek_ratio <= 0.99 and
+            0.7 <= cheek_ratio <= 0.8 and
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
@@ -233,7 +235,7 @@ class Main:
         elif (
             0.7 <= cheek_ratio <= 0.99 and
             0.7 <= jaw_ratio <= 0.8 and
-            0.6 <= forehead_ratio <= 0.7 and
+            0.6 <= forehead_ratio <= 0.99 and
             0.3 <= chin_ratio <= 0.5 and
             head_ratio <= 1.29
         ):
