@@ -22,7 +22,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/square-face-man.png"
+        self._image = "faces/man-1.png"
 
     def run_detection_stillshot(self):
         """
@@ -187,6 +187,12 @@ class Main:
         chin_ratio = chin / head_length
         head_ratio = head_length / cheek
 
+        print(cheek_ratio)
+        print(jaw_ratio)
+        print(forehead_ratio)
+        print(chin_ratio)
+        print(head_ratio)
+
         result = "Loading..."
 
         # Round Face
@@ -211,7 +217,7 @@ class Main:
 
         # Rectangle Face
         elif (
-            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= cheek_ratio <= 0.99 and
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
@@ -221,10 +227,10 @@ class Main:
 
         # Square Face
         elif (
-            0.7 <= cheek_ratio <= 0.8 and
+            0.7 <= cheek_ratio <= 0.99 and
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.7 and
-            0.3 <= chin_ratio <= 0.4 and
+            0.3 <= chin_ratio <= 0.5 and
             head_ratio <= 1.29
         ):
             result = "Face Shape: Square Face"
@@ -274,4 +280,4 @@ class Main:
 
 
 run = Main()
-run.run_dectection_live()
+run.run_detection_stillshot()
