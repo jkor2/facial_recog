@@ -20,10 +20,10 @@ Discover the ideal haircut for your face shape. Supported facial shapes include:
 - Diamond Shaped Face
 
 ## Example
-
+<div>
 <img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
 <img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
-
+</div>
 ## Future Improvements
 
 - Chin angle for further accuracy 
