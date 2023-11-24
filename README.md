@@ -2,6 +2,12 @@
 
 Welcome to Facial Shape Detection! This project utilizes facial landmarks to calculate facial shapes and helps you determine the best-suited haircut for your face.
 
+## Example
+<div>
+<img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
+<img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
+</div>
+
 ## Features
 
 - Accurate detection of facial landmarks using the LBF model.
@@ -19,11 +25,6 @@ Discover the ideal haircut for your face shape. Supported facial shapes include:
 - Heart-Shaped Face
 - Diamond Shaped Face
 
-## Example
-<div>
-<img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
-<img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
-</div>
 ## Future Improvements
 
 - Chin angle for further accuracy 
