@@ -27,7 +27,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/round/round-test.png"
+        self._image = "faces/rectangle/rectangle.png"
 
     def run_detection_stillshot(self):
         """
@@ -154,6 +154,16 @@ class Main:
                 forehead_distance = eye_brow_right[0] - eye_brow_left[0]
                 chin_distance = chin_right[0] - chin_left[0]
                 head_lenghth = bottom_chin[1] - forehead
+                # Jaw Angle detection
+                jaw_width = top_jaw_distance
+                jaw_right_to_down_one = nose_right[0] - \
+                    cheek_bone_right_down_one[0]
+                jaw_left_to_down_one = cheek_bone_right_down_one[0] - \
+                    nose_left[0]
+
+                print(jaw_width)
+                print(jaw_right_to_down_one)
+                print(jaw_left_to_down_one)
 
                 # Plots lines
                 cv.line(frame, cheek_left, cheek_right, (128, 128, 128), 2)
@@ -200,12 +210,6 @@ class Main:
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
         head_ratio = head_length / cheek
-
-        print(cheek_ratio)
-        print(jaw_ratio)
-        print(forehead_ratio)
-        print(chin_ratio)
-        print(head_ratio)
 
         result = "Loading..."
 
@@ -277,6 +281,15 @@ class Main:
 
         cv.putText(frame, str(result), (10, 50),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
+
+    # ------------Calculations--------------------------
+    def _calculate_angle(self, c, b, a):
+        temp_a = a
+        temp_c = c
+        top = (a**2 + c**2) - b ** 2
+        bottom = (2 * temp_a) * temp_c
+        angle = top / bottom
+        return angle
 
     # -------------Create-Methods-----------------------
 
