@@ -11,6 +11,7 @@ Toruble detecting faceshape with beard
 from __future__ import print_function
 import cv2 as cv
 import argparse
+import numpy as np
 
 
 class Main:
@@ -156,14 +157,14 @@ class Main:
                 head_lenghth = bottom_chin[1] - forehead
                 # Jaw Angle detection
                 jaw_width = top_jaw_distance
-                jaw_right_to_down_one = nose_right[0] - \
-                    cheek_bone_right_down_one[0]
+                jaw_right_to_down_one = cheek_bone_right_down_one[1] - \
+                    nose_right[1]
+
                 jaw_left_to_down_one = cheek_bone_right_down_one[0] - \
                     nose_left[0]
 
-                print(jaw_width)
-                print(jaw_right_to_down_one)
-                print(jaw_left_to_down_one)
+                self._calculate_angle(
+                    jaw_width, jaw_right_to_down_one, jaw_left_to_down_one)
 
                 # Plots lines
                 cv.line(frame, cheek_left, cheek_right, (128, 128, 128), 2)
@@ -186,11 +187,10 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 # Plot lines jaw angle
-                cv.line(frame, nose_left, cheek_bone_right_down_one,
-                        (0, 0, 0), 2)
-                cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
-                cv.line(frame, nose_right, cheek_bone_right_down_one,
-                        (0, 0, 0), 2)
+                cv.line(
+                    frame, (nose_left[0], nose_left[1]), nose_right, (0, 128, 0), 2)
+                cv.line(frame, nose_right, (cheek_bone_right_down_one[0], cheek_bone_right_down_one[1]),
+                        (0, 128, 0), 2)
 
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
@@ -284,12 +284,13 @@ class Main:
 
     # ------------Calculations--------------------------
     def _calculate_angle(self, c, b, a):
-        temp_a = a
-        temp_c = c
-        top = (a**2 + c**2) - b ** 2
-        bottom = (2 * temp_a) * temp_c
-        angle = top / bottom
-        return angle
+        # Calculate the cosine of the jaw angle using the cosine law
+        cosine_angle = (b**2 + c**2 - a**2) / (2 * b * c)
+
+        # Calculate the jaw angle in degrees
+        jaw_angle_degrees = np.degrees(np.arccos(cosine_angle))
+
+        print("Jaw Angle:", jaw_angle_degrees, "degrees")
 
     # -------------Create-Methods-----------------------
 
