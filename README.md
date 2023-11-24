@@ -1,40 +1,30 @@
-# Facial Shape Detection for Optimal Haircuts
+# Facial Shape Detection
 
-This Python script utilizes OpenCV to detect facial landmarks and determine facial shape, providing users with insights to optimize their haircut based on their face shape.
+Welcome to Facial Shape Detection! This project utilizes facial landmarks to calculate facial shapes and helps you determine the best-suited haircut for your face.
 
-## How It Works
+## Features
 
-1. **Face Detection:** The script employs Haar cascades for face detection in a video stream or image. Detected faces are enclosed with rectangles.
+- Accurate detection of facial landmarks using the LBF model.
+- Identification of facial shapes based on ratios of distinct facial features.
+- Support for both still shot detection and live camera detection.
 
-2. **Facial Landmark Detection:** The program uses the LBF (Local Binary Feature) model to identify facial landmarks. These landmarks are crucial points on the face, allowing for detailed analysis.
+## Facial Shapes
 
-3. **Landmark Visualization:** The code plots the facial landmarks on the image, forming a comprehensive map of the face.
+Discover the ideal haircut for your face shape. Supported facial shapes include:
 
-4. **Facial Shape Lines:** Essential lines indicating specific facial features such as eyes, chin, and nose are drawn. These lines aid in determining the user's facial shape.
+- Round Face
+- Oval Face
+- Rectangle Face
+- Square Face
+- Heart-Shaped Face
+- Diamond Shaped Face
 
-5. **User Interface:** The resulting image is displayed in a window, providing a visual representation of the detected facial landmarks and shape.
+## Example
 
-## Additional Features (To Be Implemented)
+<img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="200">
 
-The code provides a foundation for further enhancements:
+## Future Improvements
 
-- **Eye Brow Line Detection:** Detect and display the eyebrow line on the image.
-- **Lips Line Detection:** Implement lips line detection and visualization.
-- **Text Annotations:** Add text annotations for each detected feature (e.g., "Eye Line," "Chin Line").
-
-## How to Use
-
-1. Ensure you have the required dependencies installed.
-2. Adjust the paths for the LBF model and Haar cascade files in the script.
-3. Run the script and capture a video stream or provide an image.
-4. View the displayed window with facial landmarks and shape lines.
-5. Analyze the visual representation to determine your facial shape.
-
-Feel free to contribute to the project and add more features to enhance the user experience!
-
-**Note:** Press 'ESC' to exit the program.
-
-## Acknowledgments
-
-- This project is a learning exercise for utilizing OpenCV for facial landmark detection.
-- Haar cascade and LBF model files are essential for accurate face and landmark detection.
+- Chin angle for further accuracy 
+- Investigate and enhance heart and diamond face shape 
+- Face shape detection with a beard.
