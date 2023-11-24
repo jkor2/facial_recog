@@ -2,6 +2,11 @@
 
 Welcome to Facial Shape Detection! This project utilizes facial landmarks to calculate facial shapes and helps you determine the best-suited haircut for your face.
 
+## LBF Model and Haar Cascade Classifier
+
+- **LBF Model:** The project employs the LBF model for facial landmark detection. LBF (Local Binary Feature) is a powerful and robust algorithm for facial landmark localization.
+- **Haar Cascade Classifier:** The Haar Cascade classifier is used for detecting faces in images. The project uses a pre-trained Haar Cascade classifier for accurate face detection.
+
 ## Example
 <div>
 <img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
