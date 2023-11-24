@@ -21,7 +21,7 @@ Discover the ideal haircut for your face shape. Supported facial shapes include:
 
 ## Example
 
-![Example Image](faces/rectangle/rectangle.png)
+![Example Image](faces/rectangle/rectangle.png =300x200)
 
 ## Future Improvements
 
