@@ -10,7 +10,7 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 
 ## Features
 
-- Accurate detection of facial landmarks using the LBF model.
+- Detection of facial landmarks using the LBF model.
 - Identification of facial shapes based on ratios of distinct facial features.
 - Support for both still shot detection and live camera detection.
 
