@@ -14,7 +14,7 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 
 - **Haar Cascade Classifier:** The Haar Cascade classifier, also a component of OpenCV, is used for detecting faces in images. The project utilizes a pre-trained Haar Cascade classifier for accurate face detection.
 
-- **OpenCV** By leveraging OpenCV's functionalities, this project benefits from a well-established and versatile computer vision library.
+- **OpenCV:** By leveraging OpenCV's functionalities, this project benefits from a well-established and versatile computer vision library.
 
 ## Example
 <div>
