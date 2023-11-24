@@ -27,7 +27,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/rectangle/rectangle.png"
+        self._image = "faces/round/round-test.png"
 
     def run_detection_stillshot(self):
         """
@@ -145,6 +145,8 @@ class Main:
                 eye_brow_left = landmark_points[17]
                 eye_brow_right = landmark_points[26]
                 bottom_chin = landmark_points[8]
+                # For jaw angle calculation
+                cheek_bone_right_down_one = landmark_points[12]
 
                 # Calcaulte face landmark distances
                 cheek_distance = cheek_right[0] - cheek_left[0]
@@ -172,6 +174,13 @@ class Main:
                         int(forehead)), (128, 128, 128), 2)
                 cv.putText(frame, str(head_lenghth), ((int(forhead_mid) + 10), int(bottom_chin[1])),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
+
+                # Plot lines jaw angle
+                cv.line(frame, nose_left, cheek_bone_right_down_one,
+                        (0, 0, 0), 2)
+                cv.line(frame, nose_left, nose_right, (0, 0, 0), 2)
+                cv.line(frame, nose_right, cheek_bone_right_down_one,
+                        (0, 0, 0), 2)
 
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
