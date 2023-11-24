@@ -10,8 +10,11 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 
 ## LBF Model and Haar Cascade Classifier
 
-- **LBF Model:** The project employs the LBF model for facial landmark detection. LBF (Local Binary Feature) is a powerful and robust algorithm for facial landmark localization.
-- **Haar Cascade Classifier:** The Haar Cascade classifier is used for detecting faces in images. The project uses a pre-trained Haar Cascade classifier for accurate face detection.
+- **LBF Model:** The project employs the LBF model, a part of the OpenCV library, for facial landmark detection. LBF (Local Binary Feature) is a powerful and robust algorithm for facial landmark localization. OpenCV is an open-source computer vision library widely used for image and video processing tasks.
+
+- **Haar Cascade Classifier:** The Haar Cascade classifier, also a component of OpenCV, is used for detecting faces in images. The project utilizes a pre-trained Haar Cascade classifier for accurate face detection.
+
+- **OpenCV** By leveraging OpenCV's functionalities, this project benefits from a well-established and versatile computer vision library.
 
 ## Example
 <div>
