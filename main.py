@@ -28,8 +28,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/round/round_test_11.png"
-        # Round 66 Degrees
+        self._image = "faces/rectangle/rectangle.png"
 
     def run_detection_stillshot(self):
         """
@@ -192,15 +191,15 @@ class Main:
                 cv.line(frame, nose_right, (cheek_bone_right_down_one[0], cheek_bone_right_down_one[1]),
                         (0, 128, 0), 2)
 
-                cv.putText(frame, (str(jaw_angle)[:4]), (int(cheek_bone_right_down_one[0] - 25), cheek_bone_right_down_one[1] - 35),
+                cv.putText(frame, (str(jaw_angle)[:4]), (int(cheek_bone_right_down_one[0] + 10), cheek_bone_right_down_one[1]),
                            cv.FONT_HERSHEY_DUPLEX, .45, (0, 0, 0), 1)
 
                 self.calculate_face_shape(
-                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
+                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame, jaw_angle)
 
         cv.imshow("Face Shape", frame)
 
-    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame):
+    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame, jaw_angle):
         """
         Takes 4 parameters
         cheek, jaw, forehead, chin - distances
@@ -287,10 +286,13 @@ class Main:
 
     # ------------Calculations--------------------------
     def _calculate_angle(self, c, b, a):
+        """
+        Caculates the angle og the jaw using law of cosines 
+        """
         # Calculate the cosine of the jaw angle using the cosine law
         cosine_angle = (b**2 + c**2 - a**2) / (2 * b * c)
 
-        # Calculate the jaw angle in degrees
+        # Calculate the jaw angle in degrees using arccos
         jaw_angle_degrees = np.degrees(np.arccos(cosine_angle))
         print(jaw_angle_degrees)
         return jaw_angle_degrees
