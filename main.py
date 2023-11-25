@@ -28,7 +28,8 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/rectangle/rectangle.png"
+        self._image = "faces/round/round_test_11.png"
+        # Round 66 Degrees
 
     def run_detection_stillshot(self):
         """
@@ -163,7 +164,7 @@ class Main:
                 jaw_left_to_down_one = cheek_bone_right_down_one[0] - \
                     nose_left[0]
 
-                self._calculate_angle(
+                jaw_angle = self._calculate_angle(
                     jaw_width, jaw_right_to_down_one, jaw_left_to_down_one)
 
                 # Plots lines
@@ -187,10 +188,12 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 # Plot lines jaw angle
-                cv.line(
-                    frame, (nose_left[0], nose_left[1]), nose_right, (0, 128, 0), 2)
+
                 cv.line(frame, nose_right, (cheek_bone_right_down_one[0], cheek_bone_right_down_one[1]),
                         (0, 128, 0), 2)
+
+                cv.putText(frame, (str(jaw_angle)[:4]), (int(cheek_bone_right_down_one[0] - 25), cheek_bone_right_down_one[1] - 35),
+                           cv.FONT_HERSHEY_DUPLEX, .45, (0, 0, 0), 1)
 
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame)
@@ -289,8 +292,8 @@ class Main:
 
         # Calculate the jaw angle in degrees
         jaw_angle_degrees = np.degrees(np.arccos(cosine_angle))
-
-        print("Jaw Angle:", jaw_angle_degrees, "degrees")
+        print(jaw_angle_degrees)
+        return jaw_angle_degrees
 
     # -------------Create-Methods-----------------------
 
