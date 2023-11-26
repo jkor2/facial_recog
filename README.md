@@ -1,20 +1,25 @@
 # Facial Shape Detection
 
-Welcome to Facial Shape Detection! This project utilizes facial landmarks to calculate facial shapes and helps you determine the best-suited haircut for your face.
+**Welcome to Facial Shape Detection!** This project leverages facial landmarks to precisely calculate facial shapes, helping you discover the perfect haircut tailored to your unique features. Please keep in my, results are subjective, please feel to tailor to your needs. 
 
 ## Features
-
-- Detection of facial landmarks using the LBF model.
-- Identification of facial shapes based on ratios of distinct facial features.
-- Support for both still shot detection and live camera detection.
+- **Facial Landmark Detection:** Utilizes the LBF model from OpenCV for accurate facial landmark localization for facial shape calculation.
+- **Facial Shape Identification:** Determines facial shapes based on ratios of distinctive facial features and jaw angle.
+- **Versatile Detection:** Supports both still shot analysis and real-time camera detection.
+- **Decision Tree Classifier Implementation:** Enhances result verification using Scikit-Learn's Decision Tree Classifier.
 
 ## LBF Model and Haar Cascade Classifier
+- **LBF Model:** Employs OpenCV's LBF model, a robust algorithm for facial landmark detection, ensuring precision in identifying key facial points.
+- **Haar Cascade Classifier:** Utilizes OpenCV's Haar Cascade classifier for reliable face detection in images, enhancing overall project accuracy.
 
-- **LBF Model:** The project employs the LBF model, a part of the OpenCV library, for facial landmark detection. LBF (Local Binary Feature) is a powerful and robust algorithm for facial landmark localization. OpenCV is an open-source computer vision library widely used for image and video processing tasks.
+## OpenCV Integration
+By harnessing the capabilities of OpenCV, a renowned open-source computer vision library, this project benefits from a well-established and versatile toolkit for image and video processing tasks.
 
-- **Haar Cascade Classifier:** The Haar Cascade classifier, also a component of OpenCV, is used for detecting faces in images. The project utilizes a pre-trained Haar Cascade classifier for accurate face detection.
-
-- **OpenCV:** By leveraging OpenCV's functionalities, this project benefits from a well-established and versatile computer vision library.
+## Facial Shape Classification
+### Methods:
+1. **Facial Feature Ratios:** Analyzes ratios of key facial features to determine facial shape.
+2. **Jaw Angle Calculation:** Introduces jaw angle calculation for a more refined analysis.
+3. **Decision Tree Classification:** Implements a Scikit-Learn Decision Tree Classifier to further validate results.
 
 ## Example
 <div>
@@ -22,10 +27,8 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 <img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
 </div>
 
-## Facial Shapes
-
-Discover the ideal haircut for your face shape. Supported facial shapes include:
-
+## Supported Facial Shapes
+Discover the ideal haircut for your face shape among the following:
 - Round Face
 - Oval Face
 - Rectangle Face
@@ -34,7 +37,7 @@ Discover the ideal haircut for your face shape. Supported facial shapes include:
 - Diamond Shaped Face
 
 ## Future Improvements
+- Investigate and refine heart and diamond face shape detection.
 
-- Chin angle for further accuracy 
-- Investigate and enhance heart and diamond face shape 
-- Face shape detection with a beard.
+## Code Overview
+The Python code provided utilizes the LBF model and Haar Cascade classifier for facial landmark detection, incorporating sophisticated methods to calculate facial shapes. The project's modular design ensures flexibility and ease of extension for future enhancements.
