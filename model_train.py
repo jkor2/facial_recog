@@ -31,9 +31,13 @@ class PredictShape:
 
         # Make Prediction
         predictions = model.predict([new_feature_vector])
+        y_test_predictions = model.predict(X_test)
 
+        # Evaluate the model
+        accuracy = accuracy_score(y_test, y_test_predictions)
+
+        print(f"Accuracy: {accuracy * 100:.2f}%")
         print("Prediction:", predictions)
 
-test = PredictShape([0.8431372549019608, 0.7625272331154684,
-                              0.7320261437908496, 0.39433551198257083, 1.186046511627907, 46.17364610783178])
+test = PredictShape([0.7689243027888446, 0.701195219123506, 0.6593625498007968, 0.36254980079681276, 1.3005181347150259, 56.740016844595104])
 test.train_model()

@@ -22,7 +22,7 @@ class Main:
         self._face_cascade = None
         self._landmark_detector = None
         # Path for still shot image
-        self._image = "faces/round/round-test.png"
+        self._image = "faces/rectangle/rectangle.png"
 
     def run_detection_stillshot(self):
         """
@@ -274,11 +274,11 @@ class Main:
             result = "Face Shape: Please adjust distance from camera"
 
         if method == "stillshot":
-            "Predictibe model"
             pass
-
-        print(f"[{cheek_ratio}, {jaw_ratio}, {forehead_ratio}, {
-            chin_ratio}, {head_ratio}, {jaw_angle}],")
+        
+        if result == "Face Shape: Rectangle Face":
+            print(f"[{cheek_ratio}, {jaw_ratio}, {forehead_ratio}, {
+                chin_ratio}, {head_ratio}, {jaw_angle}],")
 
         cv.putText(frame, str(result), (10, 50),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
