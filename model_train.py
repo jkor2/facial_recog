@@ -10,7 +10,7 @@ class PredictShape:
 
     def train_model(self):
         """
-        Training a DTC for prediction of facial shape 
+        Training a DTC for prediction classification 
         """
         # Get model data 
         X  = data.X
