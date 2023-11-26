@@ -7,6 +7,7 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 - Detection of facial landmarks using the LBF model.
 - Identification of facial shapes based on ratios of distinct facial features.
 - Support for both still shot detection and live camera detection.
+- Scikit-Learn Descion Tree Classifer Implementation to further verify results.
 
 ## LBF Model and Haar Cascade Classifier
 
@@ -15,6 +16,14 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 - **Haar Cascade Classifier:** The Haar Cascade classifier, also a component of OpenCV, is used for detecting faces in images. The project utilizes a pre-trained Haar Cascade classifier for accurate face detection.
 
 - **OpenCV:** By leveraging OpenCV's functionalities, this project benefits from a well-established and versatile computer vision library.
+
+## Facial Shape Classification 
+
+- **Method 1:** Facial Feature Ratio's
+
+- **Method 2:** Jaw Angle Calculation  
+
+- **Method 3:** Descion Tree Classifer 
 
 ## Example
 <div>
