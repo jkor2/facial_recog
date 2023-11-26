@@ -23,7 +23,7 @@ Welcome to Facial Shape Detection! This project utilizes facial landmarks to cal
 
 - **Method 2:** Jaw Angle Calculation  
 
-- **Method 3:** Descion Tree Classifer 
+- **Method 3:** Descion Tree Classification 
 
 ## Example
 <div>
