@@ -279,12 +279,12 @@ class Main:
     # ------------Calculations--------------------------
     def _calculate_angle(self, c, b, a):
         """
-        Caculates the angle og the jaw using law of cosines 
+        Caculates the angle of the jaw using law of cosines 
         """
-        # Calculate the cosine of the jaw angle using the cosine law
+        # Calculate the cosine of the jaw angle 
         cosine_angle = (b**2 + c**2 - a**2) / (2 * b * c)
 
-        # Calculate the jaw angle in degrees using arccos
+        # Calculate the jaw angle in degrees with arcosine
         jaw_angle_degrees = np.degrees(np.arccos(cosine_angle))
 
         return jaw_angle_degrees
