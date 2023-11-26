@@ -28,7 +28,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/WIN_20231125_18_57_56_Pro.jpg"
+        self._image = "faces/rectangle/rectangle.png"
 
     def run_detection_stillshot(self):
         """
@@ -204,13 +204,17 @@ class Main:
         cheek, jaw, forehead, chin - distances
         calculates facial shape 
         """
-
         # Ratios
         cheek_ratio = cheek / head_length
         jaw_ratio = jaw / head_length
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
         head_ratio = head_length / cheek
+        print(cheek_ratio)
+        print(jaw_ratio)
+        print(forehead_ratio)
+        print(chin_ratio)
+        print(head_ratio)
 
         result = "Loading..."
 
@@ -228,19 +232,19 @@ class Main:
         # Oval Face
         # Cheek needs to be widest point
         elif (
-            0.7 <= cheek_ratio <= 0.8 and
-            0.6 <= jaw_ratio <= 0.7 and
+            0.5 <= cheek_ratio <= 0.8 and
+            0.5 <= jaw_ratio <= 0.7 and
             0.5 <= forehead_ratio <= 0.7 and
             0.2 <= chin_ratio <= 0.4 and
-            1.25 <= head_ratio <= 1.5 and jaw_angle > 50.0
+            1.25 <= head_ratio <= 1.6 and jaw_angle > 50.0
         ):
             result = "Face Shape: Oval Face"
 
         # Rectangle Face
         elif (
-            0.7 <= cheek_ratio <= 0.8 and
-            0.7 <= jaw_ratio <= 0.8 and
-            0.6 <= forehead_ratio <= 0.8 and
+            0.5 <= cheek_ratio <= 0.8 and
+            0.5 <= jaw_ratio <= 0.8 and
+            0.5 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
             head_ratio >= 1.30
         ):
