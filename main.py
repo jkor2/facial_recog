@@ -28,7 +28,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/square/square-test-1.png"
+        self._image = "faces/round/round-test.png"
 
     def run_detection_stillshot(self):
         """
@@ -210,11 +210,6 @@ class Main:
         forehead_ratio = forehead / head_length
         chin_ratio = chin / head_length
         head_ratio = head_length / cheek
-        print(cheek_ratio)
-        print(jaw_ratio)
-        print(forehead_ratio)
-        print(chin_ratio)
-        print(head_ratio)
 
         result = "Loading..."
 
@@ -284,6 +279,9 @@ class Main:
         else:
             result = "Face Shape: Please adjust distance from camera"
 
+        print(f"[{cheek_ratio}, {jaw_ratio}, {forehead_ratio}, {
+            chin_ratio}, {head_ratio}, {jaw_angle}],")
+
         cv.putText(frame, str(result), (10, 50),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
 
@@ -297,7 +295,7 @@ class Main:
 
         # Calculate the jaw angle in degrees using arccos
         jaw_angle_degrees = np.degrees(np.arccos(cosine_angle))
-        print(jaw_angle_degrees)
+
         return jaw_angle_degrees
 
     # -------------Create-Methods-----------------------
