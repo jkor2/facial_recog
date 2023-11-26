@@ -49,7 +49,7 @@ class Main:
         ratio = target_width / image.shape[1]
         image = cv.resize(image, (target_width, int(image.shape[0] * ratio)))
 
-        self.detect_and_display(image, self._landmark_detector)
+        self.detect_and_display(image, self._landmark_detector, "stillshot")
 
         cv.waitKey(0)
 
@@ -86,7 +86,7 @@ class Main:
                 break
 
             # Call detect and display method
-            self.detect_and_display(cv.flip(frame, 1), self._landmark_detector)
+            self.detect_and_display(cv.flip(frame, 1), self._landmark_detector, "live")
             # Exit program on press of exit key
             if cv.waitKey(10) == 27:
                 break
@@ -94,7 +94,7 @@ class Main:
             # To run live capture frame by frame, comment out cv.waitKey
             # section and repalce with just cv.waitKey(0)
 
-    def detect_and_display(self, frame, landmark_detector):
+    def detect_and_display(self, frame, landmark_detector, method):
         """
         Dection of face and its landmarks, visual plots
         """
@@ -194,11 +194,11 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .45, (0, 0, 0), 1)
 
                 self.calculate_face_shape(
-                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame, jaw_angle)
+                    cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame, jaw_angle, method)
 
         cv.imshow("Face Shape", frame)
 
-    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame, jaw_angle):
+    def calculate_face_shape(self, cheek, jaw, forehead, chin, head_length, frame, jaw_angle, method):
         """
         Takes 4 parameters
         cheek, jaw, forehead, chin - distances
@@ -278,6 +278,10 @@ class Main:
         # If none of the conditions match
         else:
             result = "Face Shape: Please adjust distance from camera"
+
+        if method == "stillshot":
+            "Predictibe model"
+            pass
 
         print(f"[{cheek_ratio}, {jaw_ratio}, {forehead_ratio}, {
             chin_ratio}, {head_ratio}, {jaw_angle}],")
