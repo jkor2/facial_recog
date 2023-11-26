@@ -28,7 +28,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/rectangle/rectangle.png"
+        self._image = "faces/square/square-test-1.png"
 
     def run_detection_stillshot(self):
         """
@@ -246,7 +246,7 @@ class Main:
             0.5 <= jaw_ratio <= 0.8 and
             0.5 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
-            head_ratio >= 1.30
+            head_ratio >= 1.30 and jaw_angle > 55
         ):
             result = "Face Shape: Rectangle Face"
 
@@ -256,7 +256,7 @@ class Main:
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.99 and
             0.3 <= chin_ratio <= 0.5 and
-            head_ratio <= 1.29
+            head_ratio <= 1.29 and jaw_angle < 55
         ):
             result = "Face Shape: Square Face"
 
