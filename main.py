@@ -1,13 +1,6 @@
 # Detect facial landmarks to calcualte facial shape
 # to determine which haircut fits you best!
-# Need to come up with ratio to determine face shape
-
-"""
-Need to further distinguish rectangle and square, jaw angle would be benefical
-Need to look further into round and oval classification
-Toruble detecting faceshape with beard
-"""
-
+# Need to further distinguish rectangle and square, jaw angle would be benefical
 from __future__ import print_function
 import cv2 as cv
 import argparse
@@ -21,13 +14,14 @@ class Main:
     """
 
     def __init__(self) -> None:
-        self._LBFModel = "data/lbfmodel.yaml"  # LBF Model
+        self._LBFModel = "data/lbfmodel.yaml"  # LBF Model 
         self._haarcascade = "data/lbpcascade_frontalface.xml"  # Training Data
         self._parser = argparse.ArgumentParser(
             description="Code for facial recognition")
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
+        # Path for still shot image
         self._image = "faces/round/round-test.png"
 
     def run_detection_stillshot(self):
@@ -135,7 +129,7 @@ class Main:
             # Check if atleast all points have been plotted
             if len(landmark_points) >= 68:
 
-                # Needed Facial Landmark (x,y) pairs
+                # Facial Landmark (x,y) pair locations in list
                 cheek_left = landmark_points[1]
                 cheek_right = landmark_points[15]
                 chin_left = landmark_points[6]
@@ -145,6 +139,7 @@ class Main:
                 eye_brow_left = landmark_points[17]
                 eye_brow_right = landmark_points[26]
                 bottom_chin = landmark_points[8]
+                
                 # For jaw angle calculation
                 cheek_bone_right_down_one = landmark_points[11]
 
@@ -154,6 +149,7 @@ class Main:
                 forehead_distance = eye_brow_right[0] - eye_brow_left[0]
                 chin_distance = chin_right[0] - chin_left[0]
                 head_lenghth = bottom_chin[1] - forehead
+                
                 # Jaw Angle detection
                 jaw_width = top_jaw_distance
                 jaw_right_to_down_one = cheek_bone_right_down_one[1] - \
@@ -165,7 +161,7 @@ class Main:
                 jaw_angle = self._calculate_angle(
                     jaw_width, jaw_right_to_down_one, jaw_left_to_down_one)
 
-                # Plots lines
+                # Plots lines and text
                 cv.line(frame, cheek_left, cheek_right, (128, 128, 128), 2)
                 cv.putText(frame, str(cheek_distance), (cheek_left[0], (cheek_left[1] - 5)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
@@ -175,7 +171,6 @@ class Main:
                 cv.line(frame, nose_left, nose_right, (128, 128, 128), 2)
                 cv.putText(frame, str(top_jaw_distance), (nose_left[0], (nose_left[1] - 10)),
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
-                # Forehead calculated based on farthest out eyebrow point and plotted slightly below the top of forehead
                 cv.line(frame, (eye_brow_left[0], int(forehead * 1.10)),
                         (eye_brow_right[0], int(forehead * 1.10)), (128, 128, 128), 2)
                 cv.putText(frame, str(forehead_distance),
@@ -186,7 +181,6 @@ class Main:
                            cv.FONT_HERSHEY_DUPLEX, .35, (0, 0, 0), 0)
 
                 # Plot lines jaw angle
-
                 cv.line(frame, nose_right, (cheek_bone_right_down_one[0], cheek_bone_right_down_one[1]),
                         (0, 128, 0), 2)
 
