@@ -15,6 +15,9 @@
 ## OpenCV Integration
 By harnessing the capabilities of OpenCV, a renowned open-source computer vision library, this project benefits from a well-established and versatile toolkit for image and video processing tasks.
 
+## Scikit-Learn Integration
+Implentation of a descionntree classifer, trained on 105 different celebrities by capturing 4500 unique instances of facial shapes at different angles and distances away from the camera. 
+
 ## Facial Shape Classification
 ### Methods:
 1. **Facial Feature Ratios:** Analyzes ratios of key facial features to determine facial shape.
