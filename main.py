@@ -278,7 +278,7 @@ class Main:
             descion_tree  =  dtc.PredictShape([cheek_ratio, jaw_ratio, forehead_ratio, chin_ratio, head_ratio, jaw_angle])
             classification = descion_tree.train_model()
             print(classification)
-            cv.putText(frame, str("Model Classification: " + classification[1][1][0].upper()), (10, 70),
+            cv.putText(frame, str("Classification: " + classification[1][1][0].upper()), (10, 70),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
 
         #if result == "Face Shape: Rectangle Face":
