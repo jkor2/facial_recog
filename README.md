@@ -25,7 +25,6 @@ The implentation of a Scikit-Learn's decision tree classifier model is trained o
 3. **Decision Tree Classification:** Implements a Scikit-Learn Decision Tree Classifier to further validate results.
 
 ## Example
-<div gap="2vw> <h5>Input</h5> <h5>Output</h5></div>
 <div>
 <img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
 <img src="faces/rectangle/updated-example.png" alt="Example Image" width="300" height="350">
