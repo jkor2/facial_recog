@@ -28,7 +28,7 @@ class Main:
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        self._image = "faces/rectangle/rectangle.png"
+        self._image = "faces/WIN_20231125_18_57_56_Pro.jpg"
 
     def run_detection_stillshot(self):
         """
@@ -131,7 +131,6 @@ class Main:
 
                     # Apppend x,y pair in tuple format
                     landmark_points.append((int(x), int(y)))
-                    cv.circle(frame, (int(x), int(y)), 1, (255, 255, 255), 1)
 
             # Check if atleast all points have been plotted
             if len(landmark_points) >= 68:
@@ -147,7 +146,7 @@ class Main:
                 eye_brow_right = landmark_points[26]
                 bottom_chin = landmark_points[8]
                 # For jaw angle calculation
-                cheek_bone_right_down_one = landmark_points[12]
+                cheek_bone_right_down_one = landmark_points[11]
 
                 # Calcaulte face landmark distances
                 cheek_distance = cheek_right[0] - cheek_left[0]
@@ -222,7 +221,7 @@ class Main:
             0.7 <= jaw_ratio <= 0.8 and
             0.6 <= forehead_ratio <= 0.8 and
             0.3 <= chin_ratio <= 0.4 and
-            head_ratio <= 1.25
+            head_ratio <= 1.25 and jaw_angle <= 50.0
         ):
             result = "Face Shape: Round Face"
 
@@ -233,7 +232,7 @@ class Main:
             0.6 <= jaw_ratio <= 0.7 and
             0.5 <= forehead_ratio <= 0.7 and
             0.2 <= chin_ratio <= 0.4 and
-            1.25 <= head_ratio <= 1.5
+            1.25 <= head_ratio <= 1.5 and jaw_angle > 50.0
         ):
             result = "Face Shape: Oval Face"
 
