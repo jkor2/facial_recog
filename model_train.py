@@ -18,7 +18,7 @@ class PredictShape:
         
         #Prepare the Data
         X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42)
+            X, y, test_size=0.2, random_state=41)
 
         # Select DTC
         model = DecisionTreeClassifier()
@@ -36,8 +36,5 @@ class PredictShape:
         # Evaluate the model
         accuracy = accuracy_score(y_test, y_test_predictions)
 
-        print(f"Accuracy: {accuracy * 100:.2f}%")
-        print("Prediction:", predictions)
+        return [["accuracy", accuracy * 100], [ "prediction", predictions]]
 
-test = PredictShape([0.7689243027888446, 0.701195219123506, 0.6593625498007968, 0.36254980079681276, 1.3005181347150259, 56.740016844595104])
-test.train_model()

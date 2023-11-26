@@ -24,7 +24,7 @@ By harnessing the capabilities of OpenCV, a renowned open-source computer vision
 ## Example
 <div>
 <img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
-<img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
+<img src="faces/rectangle/updated-example.png" alt="Example Image" width="300" height="350">
 </div>
 
 ## Supported Facial Shapes
