@@ -1,12 +1,8 @@
-# Detect facial landmarks to calcualte facial shape
-# to determine which haircut fits you best!
-# Need to further distinguish rectangle and square, jaw angle would be benefical
 from __future__ import print_function
 import cv2 as cv
 import argparse
 import numpy as np
 import model_train as dtc
-
 
 class Main:
     """
@@ -15,16 +11,19 @@ class Main:
     """
 
     def __init__(self) -> None:
-        self._LBFModel = "data/lbfmodel.yaml"  # LBF Model 
-        self._haarcascade = "data/lbpcascade_frontalface.xml"  # Training Data
+        # Do not touch ----------------------
+        self._LBFModel = "data/lbfmodel.yaml"   
+        self._haarcascade = "data/lbpcascade_frontalface.xml"  
         self._parser = argparse.ArgumentParser(
             description="Code for facial recognition")
         self._args = None
         self._face_cascade = None
         self._landmark_detector = None
-        # Path for still shot image
+        # -----------------------------------
+        # Path for still shot image - update as needed
         self._image = "faces/rectangle/rectangle.png"
-
+        # -----------------------------------
+    
     def run_detection_stillshot(self):
         """
         Begin face detecion on single image
@@ -107,10 +106,6 @@ class Main:
 
         for (x, y, w, h) in faces:
 
-            # Plot rectangle around face on image
-            # frame = cv.rectangle(frame, (x, y), (x+w, y+h),
-            #                     (128, 128, 128), 1)
-
             # Top of forehead area, y
             forehead = y
 
@@ -184,10 +179,10 @@ class Main:
                 # Plot lines jaw angle
                 cv.line(frame, nose_right, (cheek_bone_right_down_one[0], cheek_bone_right_down_one[1]),
                         (0, 128, 0), 2)
-
                 cv.putText(frame, (str(jaw_angle)[:4]), (int(cheek_bone_right_down_one[0] + 10), cheek_bone_right_down_one[1]),
                            cv.FONT_HERSHEY_DUPLEX, .45, (0, 0, 0), 1)
 
+                # Calculate face shape 
                 self.calculate_face_shape(
                     cheek_distance, top_jaw_distance, forehead_distance, chin_distance, head_lenghth, frame, jaw_angle, method)
 
@@ -209,7 +204,6 @@ class Main:
         result = "Loading..."
 
         # Round Face
-        # Cheek needs to be widest point
         if (
             0.8 <= cheek_ratio <= 1.0 and
             0.7 <= jaw_ratio <= 0.8 and
@@ -220,7 +214,6 @@ class Main:
             result = "Face Shape: Round Face"
 
         # Oval Face
-        # Cheek needs to be widest point
         elif (
             0.5 <= cheek_ratio <= 0.8 and
             0.5 <= jaw_ratio <= 0.7 and
@@ -277,13 +270,8 @@ class Main:
         if method == "stillshot":
             descion_tree  =  dtc.PredictShape([cheek_ratio, jaw_ratio, forehead_ratio, chin_ratio, head_ratio, jaw_angle])
             classification = descion_tree.train_model()
-            print(classification)
             cv.putText(frame, str("Classification: " + classification[1][1][0].upper()), (10, 70),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
-
-        #if result == "Face Shape: Rectangle Face":
-        #    print(f"[{cheek_ratio}, {jaw_ratio}, {forehead_ratio}, {
-        #        chin_ratio}, {head_ratio}, {jaw_angle}],")
 
         cv.putText(frame, str(result), (10, 50),
                    cv.FONT_HERSHEY_DUPLEX, .5, (0, 0, 0), 1)
@@ -318,5 +306,6 @@ class Main:
         self._face_cascade = cv.CascadeClassifier(self._haarcascade)
 
 
-run = Main()
-run.run_detection_stillshot()
+# main = Main()
+# main.run_detection_stillshot()
+# main.run_dectection_live()
