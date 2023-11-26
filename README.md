@@ -1,6 +1,6 @@
 # Facial Shape Detection
 
-**Welcome to Facial Shape Detection!** This project leverages facial landmarks to precisely calculate facial shapes, helping you discover the perfect haircut tailored to your unique features. Please keep in my, results are subjective, please feel to tailor to your needs. 
+**Welcome to Facial Shape Detection!** This project leverages facial landmarks to precisely calculate facial shapes, helping you discover the perfect haircut tailored to your unique features. **Please keep in mind**, results are subjective, please feel to tailor to your needs. 
 
 ## Features
 - **Facial Landmark Detection:** Utilizes the LBF model from OpenCV for accurate facial landmark localization for facial shape calculation.
