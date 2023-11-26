@@ -22,7 +22,7 @@ By harnessing the capabilities of OpenCV, a renowned open-source computer vision
 3. **Decision Tree Classification:** Implements a Scikit-Learn Decision Tree Classifier to further validate results.
 
 ## Example
-![Example Image](path/to/your/example-image.png)<div>
+<div>
 <img src="faces/rectangle/rectangle.png" alt="Example Image" width="300" height="350">
 <img src="faces/rectangle/positive-test.png" alt="Example Image" width="300" height="350">
 </div>
