@@ -308,4 +308,4 @@ class Main:
 
 main = Main()
 main.run_detection_stillshot()
-# main.run_dectection_live()
+#main.run_dectection_live()
